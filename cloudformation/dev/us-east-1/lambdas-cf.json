@@ -1,0 +1,29 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "dataManagerAws-EynF32gbe lambdas",
+  "Parameters": {
+    "aaLambdaRoleArn": {
+      "Type": "String",
+      "Default": "arn:aws:iam::590032265107:role/dev-dataManagerAws-EynF32gbe-r-IamRoleLambda-1JVN20AC5I5VC"
+    }
+  },
+  "Resources": {
+    "lGreetingsHello": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Description": "",
+        "Handler": "aws_modules/greetings/hello/handler.handler",
+        "MemorySize": 1024,
+        "Runtime": "nodejs",
+        "Timeout": 6,
+        "Code": {
+          "S3Bucket": "jaws.dev.useast1.aws.ryancampbell.com",
+          "S3Key": "JAWS/dataManagerAws-EynF32gbe/dev/lambdas/lGreetingsHello@1445449834630.zip"
+        },
+        "Role": {
+          "Ref": "aaLambdaRoleArn"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "dataManagerAws-EynF32gbe",
+  "version": "0.0.1",
+  "location": "https://github.com/...",
+  "author": "",
+  "description": "",
+  "domain": "aws.ryancampbell.com",
+  "stages": {
+    "dev": [
+      {
+        "region": "us-east-1",
+        "iamRoleArnLambda": "arn:aws:iam::590032265107:role/dev-dataManagerAws-EynF32gbe-r-IamRoleLambda-1JVN20AC5I5VC",
+        "iamRoleArnApiGateway": "arn:aws:iam::590032265107:role/dev-dataManagerAws-EynF32gbe-r-IamRoleApiGateway-N185XZ9ND2Q6",
+        "jawsBucket": "jaws.dev.useast1.aws.ryancampbell.com",
+        "restApiId": "5q8caggr6l"
+      }
+    ]
+  }
+}
