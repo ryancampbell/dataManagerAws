@@ -1,6 +1,9 @@
 {
   "lambda": {
-    "envVars": [],
+    "envVars": [
+      "IMAGE_RESIZE_BUCKET",
+      "JAWS_DATA_MODEL_STAGE"
+    ],
     "deploy": true,
     "package": {
       "optimize": {
@@ -8,43 +11,45 @@
         "minify": true,
         "ignore": [],
         "exclude": [
-          "aws-sdk"
-        ],
-        "includePaths": []
+          "aws-sdk",
+          "gm"
+        ]
       },
       "excludePatterns": []
     },
     "cloudFormation": {
       "Description": "",
-      "Handler": "aws_modules/greetings/hello/handler.handler",
+      "Handler": "aws_modules/awsm-images/thumbnail/handler.handler",
       "MemorySize": 1024,
       "Runtime": "nodejs",
       "Timeout": 6
     }
   },
   "apiGateway": {
-    "deploy": true,
     "cloudFormation": {
       "Type": "AWS",
-      "Path": "greetings/hello",
+      "Path": "images/thumbnail",
       "Method": "GET",
       "AuthorizationType": "none",
       "ApiKeyRequired": false,
-      "RequestTemplates": {},
-      "RequestParameters": {},
+      "RequestTemplates": {
+        "application/json": "{\"url\":\"$util.urlDecode($input.params('url'))\"}"
+      },
+      "RequestParameters": {
+        "integration.request.querystring.integrationQueryParam": "method.request.querystring.url"
+      },
+      "CacheNamespace": "String",
+      "CacheKeyParameters": [],
       "Responses": {
-        "400": {
-          "statusCode": "400"
-        },
         "default": {
           "statusCode": "200",
           "responseParameters": {},
-          "responseModels": {},
           "responseTemplates": {
             "application/json": ""
           }
         }
       }
-    }
+    },
+    "deploy": true
   }
 }

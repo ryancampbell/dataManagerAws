@@ -18,7 +18,24 @@
         "Timeout": 6,
         "Code": {
           "S3Bucket": "jaws.dev.useast1.aws.ryancampbell.com",
-          "S3Key": "JAWS/dataManagerAws-EynF32gbe/dev/lambdas/lGreetingsHello@1445449834630.zip"
+          "S3Key": "JAWS/dataManagerAws-EynF32gbe/dev/lambdas/lGreetingsHello@1445452873530.zip"
+        },
+        "Role": {
+          "Ref": "aaLambdaRoleArn"
+        }
+      }
+    },
+    "lAwsmImagesThumbnail": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Description": "",
+        "Handler": "aws_modules/awsm-images/thumbnail/handler.handler",
+        "MemorySize": 1024,
+        "Runtime": "nodejs",
+        "Timeout": 6,
+        "Code": {
+          "S3Bucket": "jaws.dev.useast1.aws.ryancampbell.com",
+          "S3Key": "JAWS/dataManagerAws-EynF32gbe/dev/lambdas/lAwsmImagesThumbnail@1445452882818.zip"
         },
         "Role": {
           "Ref": "aaLambdaRoleArn"

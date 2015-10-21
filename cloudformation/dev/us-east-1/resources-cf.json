@@ -152,6 +152,32 @@
                   ]
                 ]
               }
+            },
+            {
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+              ],
+              "Resource": [
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:aws:s3:::",
+                      "imgresize.",
+                      {
+                        "Ref": "aaProjectDomain"
+                      },
+                      "/",
+                      {
+                        "Ref": "aaDataModelStage"
+                      },
+                      "*"
+                    ]
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -228,6 +254,24 @@
         }
       },
       "DeletionPolicy": "Retain"
+    },
+    "ImgS3Bucket": {
+      "Type": "AWS::S3::Bucket",
+      "DeletionPolicy": "Delete",
+      "Properties": {
+        "AccessControl": "PublicRead",
+        "BucketName": {
+          "Fn::Join": [
+            ".",
+            [
+              "imgresize",
+              {
+                "Ref": "aaProjectDomain"
+              }
+            ]
+          ]
+        }
+      }
     }
   },
   "Outputs": {

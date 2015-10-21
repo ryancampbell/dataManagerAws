@@ -12,6 +12,7 @@
   "keywords": [],
   "devDependencies": {},
   "dependencies": {
+    "awsm-images": "github:awsm-org/awsm-images",
     "jaws-core-js": "~0.0.2"
   }
 }
